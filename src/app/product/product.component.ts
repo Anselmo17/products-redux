@@ -14,17 +14,16 @@ import { Product, StateModel } from '../models/product.model';
 })
 export class ProductComponent implements OnInit {
 
-  public item?:any;
-  public products?:Product[];
+  public item?: any;
+  public products?: Product[];
 
   constructor(private store: Store<ProductState>) { }
 
   ngOnInit() {
-   this.getList();
+    this.getList();
   }
 
-
-  async getList(){
+  async getList() {
     this.item = await this.store.pipe(select(getList), take(1)).toPromise();
     this.products = this.item.products;
   }
