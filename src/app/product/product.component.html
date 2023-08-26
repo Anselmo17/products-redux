@@ -47,13 +47,13 @@
         <form [formGroup]="formProduct">
             <div class="mb-3">
                 <label for="name" class="form-label">Nome do produto</label>
-                <input type="email" class="form-control" id="name" formControlName="name" placeholder="Fulano da Silva">
+                <input type="text" class="form-control" id="name" formControlName="name" placeholder="Fulano da Silva">
               </div>
               <div class="mb-3">
                 <label for="preco" class="form-label">Preço</label>
-                <input type="email" class="form-control" id="preco" formControlName="preco" 
+                <input type="text" class="form-control" id="preco" formControlName="preco" 
                   placeholder="0.00" 
-                  (keypress)="numberOnly($event)">
+                  currencyMask>
               </div>
         </form>
       </div>

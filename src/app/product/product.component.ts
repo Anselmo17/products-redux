@@ -38,6 +38,7 @@ export class ProductComponent implements OnInit {
 
   sendData(){
     console.log('----------',this.formProduct.value);
+    this.formProduct.reset();
   }
 
   removeProduct(id?:number){
