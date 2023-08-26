@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { productReducer } from './store/products-store/product.reducer';
 import { ProductComponent } from './product/product.component';
 import { environment } from 'src/environments/environment.prod';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,9 @@ import { environment } from 'src/environments/environment.prod';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ products: productReducer }),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    StoreDevtoolsModule,
+    StoreDevtoolsModule.instrument({ maxAge: 15, logOnly: environment.production }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,42 +1,23 @@
 .container {
-    width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.title{
-    font-size: 1.9em;
-    margin: 20px 0;
-}
-
-table {
-    border-collapse: collapse;
-    border: solid 2px #999999;
-    width: 600px;
-    margin: 0 auto;
-    font-size: 1.7em;
-}
-thead tr th {
-    text-align: center;
-    border-bottom: solid 2px #000000;
-    border-left: solid 2px #000000;
-}
-
-tr td,
-tr th {
-    border: dotted 1px #999999;
-}
-
-td{
+table{
+    font-size: 1.5em;
     text-align: center;
 }
 
-tfoot tr td {
-    text-align: center;
-    border-top: solid 2px #000000;
+.active{
+    background-color: green;
+    border-radius: 18px;
+    padding: 5px;
+    color: aliceblue;
 }
-.cor {
-    background: red;
-}
-.cor_ {
-    background: gold;
+
+.inactive{
+    background-color: grey;
+    border-radius: 18px;
+    padding: 5px;
+    color: aliceblue;
 }

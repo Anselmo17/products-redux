@@ -1,28 +1,68 @@
 <section class="container">
     <!-- Tabela -->
-    <section>
-        <table id="curso">
-            <caption class="title">Tabela de produtos</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Preço</th>
-                    <th scope="col">Status do Produto</th>
-                </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                    <td colspan="6">Estes produtos são tem excelente qualidade.</td>
-                </tr>
-            </tfoot>
-            <tbody>
-                <tr *ngFor="let product of  this.products">
-                    <td>{{product.name}}</td>
-                    <td>{{ product.preco }}</td>
-                    <td>{{ product.status === true ?'Ativo':'Inativo'}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+    <h1 class="h1 text-center mt-4">Tabela de Produtos</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of  this.products; let i = index">
+                <th scope="row">{{i + 1}}</th>
+                <td>{{product.name}}</td>
+                <td>{{ product.preco }}</td>
+                <td>
+                    <span *ngIf="product.status === true"  class="active">Ativo</span>
+                    <span *ngIf="product.status === false" class="inactive">Inativo</span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="removeProduct(product?.id)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalProduct">Adicionar</button>
 
 </section>
+
+
+
+<!-- modal -->
+<div class="modal fade" id="modalProduct" data-bs-backdrop="static" 
+   data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Adicionar Produtos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- form -->
+        <form [formGroup]="formProduct">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome do produto</label>
+                <input type="email" class="form-control" id="name" formControlName="name" placeholder="Fulano da Silva">
+              </div>
+              <div class="mb-3">
+                <label for="preco" class="form-label">Preço</label>
+                <input type="email" class="form-control" id="preco" formControlName="preco" 
+                  placeholder="0.00" 
+                  (keypress)="numberOnly($event)">
+              </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" 
+          [disabled]="!this.formProduct.valid"
+          (click)="sendData()">Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</div>
